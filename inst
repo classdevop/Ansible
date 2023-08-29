@@ -1,0 +1,39 @@
+sudo yum update
+sudo amazon-linux-extras install ansible2
+ansible --version
+cd /etc/
+ls
+cd ansible/
+ls
+sudo su
+vi hosts
+add [DEMO]
+NODE1,2 private ip
+:wq
+vi ansible.conf
+uncmment the below lines
+inventory =/etc/ansiblehosts
+sudo_user =root
+:wq
+adduser ansible
+passwd ansible
+visudo
+ansible ALL=(ALL) NOPASSWD:ALL
+:wq
+
+cd /home/ansible/
+ls
+ssh-keygen 
+ssh-copy-id -p 22 ansible@
+ssh 172.31.13.150
+ansible all --list-hosts
+ansible DEMO -a "sudo yum install docker -y"
+ssh-copy-id -p 22 ansible@172.31.10.34
+ssh 172.31.10.34
+ansible DEMO -a "sudo yum install docker -y"
+ansible DEMO -b -a "yum install docker -y"
+history
+ exit
+exit
+ history
+  history
