@@ -1,0 +1,11 @@
+--- #gather_facts
+- hosts: DEMO
+  user: ansible
+  become: yes
+  connection: ssh
+  gather_facts: yes
+  tasks:
+    - name: install javaa
+      action: yum name=java state=installed
+    - name: install git
+      action: yum name=git state=installed

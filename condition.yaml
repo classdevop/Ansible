@@ -1,0 +1,18 @@
+---
+- hosts: DEMO
+  user: ansible
+  become: yes
+  connection: ssh
+  tasks:
+    - name: install apache on Debian
+      command: apt-get -y install apache
+      when: ansible_os_family == "Debian"
+    - name: install apache for redhat
+      command: yum -y install httpd
+      when: ansible_os_family == "RedHat"
+    - name: install apache for Fedora
+      command: yum -y install httpd
+      when: ansible_os_family == "Fedora"
+    - name: install apache for Amazon Linux
+      command: yum -y install apache
+      when: ansible_os_family == "Amazon Linux"

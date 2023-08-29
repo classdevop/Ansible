@@ -1,0 +1,15 @@
+---
+- hosts: DEMO
+  user: ansible
+  become: yes
+  connection: ssh
+  vars:
+      pkgname: httpd
+  tasks:
+      - name: install '{{pkgname}}' on amazon linux server
+        action: yum name='{{pkgname}}' state=present
+        notify: restart '{{pkgname}}'
+  handlers:
+      - name: restart '{{pkgname}}'
+        action: service name='{{pkgname}}' state=restarted
+
